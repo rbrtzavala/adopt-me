@@ -16,8 +16,9 @@ class Carousel extends Component {
   }
 
   render () {
-    const { active }=  this.state
-    const { images } = this.props
+    // throw new Error("lol error");
+    const { active }=  this.state;
+    const { images } = this.props;
 
     return (
       <div className="carousel">
