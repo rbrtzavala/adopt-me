@@ -1,6 +1,6 @@
 // import React from "react";
-import { createRoot } from "react-dom";
-import Pet from "./pet";
+import { createRoot } from "react-dom/client";
+import SearchParams from "./SearchParams";
 
 // const App = () => {
 //   return React.createElement("div", {}, [
@@ -24,12 +24,12 @@ import Pet from "./pet";
 // };
 
 const App = () => {
-  <div>
-    <h1>Adopt Me!</h1>
-    <Pet name="Pandi" animal="Dog" bread="Pitty" />
-    <Pet name="Borres Torres" animal="Dog" bread="Lab Pitt Mix" />
-    <Pet name="Seagent Tibbs" animal="Dog" bread="Griffon" />
-  </div>
+  return (
+    <div>
+      <h1>Adopt Me!</h1>
+      <SearchParams />
+    </div>
+  );
 };
 
 const container = document.getElementById("root");
