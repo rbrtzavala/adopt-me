@@ -22,7 +22,7 @@ const SearchParams = () => {
   const [breeds] = useBreedList(animal);
   const results = useQuery(["search", requestParams], fetchSearch);
   const pets = results?.data?.pets ?? [];
-  
+
   // add inside component, beneath all the `useState` setup
   // useEffect(() => {
   //   requestPets();
@@ -34,12 +34,14 @@ const SearchParams = () => {
     );
     const json = await res.json();
 
-    setPets(json.pets)
+    setPets(json.pets);
   }
-  
+
   return (
-    <div className="search-params">
+    // <div className="search-params">
+    <div className="my-0 mx-auto w-11/12">
       <form
+        className="mb-10 flex flex-col items-center justify-center rounded-lg bg-gray-200 p-10 shadow-lg"
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.target);
@@ -47,31 +49,32 @@ const SearchParams = () => {
             animal: formData.get("animal") ?? "",
             breed: formData.get("breed") ?? "",
             location: formData.get("location") ?? "",
-          }
-          setRequestParams(obj)
+          };
+          setRequestParams(obj);
           // requestPets();
         }}
       >
-        {
-          adoptedPet ? (
-            <div className="pet image-container">
-              <img src={adoptedPet.images[0]} alt={adoptedPet.name}/>
-            </div>
-          ) : null
-        }
+        {adoptedPet ? (
+          <div className="pet image-container">
+            <img src={adoptedPet.images[0]} alt={adoptedPet.name} />
+          </div>
+        ) : null}
         <label htmlFor="location">
           Location:
           <input
             // onChange={(e) => setLocation(e.target.value)}
             // value={location}
+            type="text"
             id="location"
             name="location"
             placeholder="Location"
+            className="search-input"
           />
         </label>
         <label htmlFor="animal">
           Animal
           <select
+            className="search-input"
             name="animal"
             id="animal"
             value={animal}
@@ -80,17 +83,16 @@ const SearchParams = () => {
               // setBreed("");
             }}
           >
-            <option  />
+            <option />
             {ANIMALS.map((animal) => (
-              <option key={animal}>
-                {animal}
-              </option>
+              <option key={animal}>{animal}</option>
             ))}
           </select>
         </label>
         <label htmlFor="breed">
           Breed
           <select
+            className="search-input grayed-out-disabled"
             disabled={breeds.length === 0}
             name="breed"
             id="breed"
@@ -99,15 +101,15 @@ const SearchParams = () => {
             //   setBreed(e.target.value)
             // }}
           >
-            <option  />
-            {breeds.map(breed => (
-              <option key={breed}>
-                {breed}
-              </option>
+            <option />
+            {breeds.map((breed) => (
+              <option key={breed}>{breed}</option>
             ))}
           </select>
         </label>
-        <button>Submit</button>
+        <button className="rounded border-none bg-orange-500 px-6 py-2 text-white hover:opacity-50">
+          Submit
+        </button>
       </form>
       <Results pets={pets} />
     </div>

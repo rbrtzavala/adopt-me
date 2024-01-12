@@ -2,22 +2,22 @@ import { Component } from "react";
 
 class Carousel extends Component {
   state = {
-    active: 0
-  }
+    active: 0,
+  };
 
   static defaultProps = {
-    images: ["http://pets-images.dev-apis.com/pets/none.jpg"]
-  }
+    images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
+  };
 
   handleIndexClick = (e) => {
     this.setState({
-      active: +e.target.dataset.index
-    })
-  }
+      active: +e.target.dataset.index,
+    });
+  };
 
-  render () {
+  render() {
     // throw new Error("lol error");
-    const { active }=  this.state;
+    const { active } = this.state;
     const { images } = this.props;
 
     return (
@@ -36,7 +36,7 @@ class Carousel extends Component {
           ))}
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -7,9 +7,9 @@ async function fetchSearch({ queryKey }) {
 
   if (!res.ok) {
     throw new Error(`pet search is not ok ${animal}, ${location}, ${breed}`);
-  };
+  }
 
   return res.json();
-};
+}
 
 export default fetchSearch;

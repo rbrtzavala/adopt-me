@@ -5,3 +5,6 @@ dist/
 .DS_Store
 coverage/
 .vsccode/
+
+src/App2.jsx
+src/style2.css
