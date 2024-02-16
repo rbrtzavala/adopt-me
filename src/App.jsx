@@ -43,7 +43,6 @@ const App = () => {
 
   return (
     <div
-      className="m-0 p-0"
       style={{
         background: "url(https://pets-images.dev-apis.com/pets/wallpaperA.jpg)",
       }}
@@ -57,8 +56,8 @@ const App = () => {
           }
         >
           <AdoptedPetContext.Provider value={adoptedPet}>
-            <header className="mb-10 w-full bg-gradient-to-b from-yellow-400 via-orange-500 to-red-500 p-7 text-center">
-              <Link className="text-6xl text-white hover:text-gray-200" to="/">
+            <header>
+              <Link to="/">
                 Adopt Me!
               </Link>
             </header>
