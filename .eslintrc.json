@@ -9,22 +9,17 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "prettier"
   ],
-  "plugins": [
-    "react",
-    "import",
-    "jsx-a11y",
-    "@typescript-eslint"
-  ],
-  "parser": "@typescript-eslint/parser",
   "rules": {
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
     "@typescript-eslint/no-empty-function": 0
   },
+  "plugins": ["react", "import", "jsx-a11y", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
     "ecmaVersion": 2022,
     "sourceType": "module",
+    "project": "tsconfig.json",
     "ecmaFeatures": {
       "jsx": true
     }
@@ -36,12 +31,12 @@
   },
   "settings": {
     "react": {
-      "versions": "detect"
+      "version": "detect"
     },
-    "import/paersers": {
+    "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
-    "importt/reolvers": {
+    "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true
       }

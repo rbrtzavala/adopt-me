@@ -15,7 +15,7 @@ const SearchParams = () => {
   // const [pets, setPets] = useState([]);
   const [adoptedPet] = useContext(AdoptedPetContext);
   const [requestParams, setRequestParams] = useState({
-    animal: "",
+    animal: "" as Animal,
     breed: "",
     location: "",
   });
@@ -29,14 +29,14 @@ const SearchParams = () => {
   //   requestPets();
   // }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  async function requestPets() {
-    const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-    );
-    const json = await res.json();
+  // async function requestPets() {
+  //   const res = await fetch(
+  //     `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+  //   );
+  //   const json = await res.json();
 
-    setPets(json.pets);
-  }
+  //   setPets(json.pets);
+  // }
 
   return (
     // <div className="search-params">
@@ -46,9 +46,10 @@ const SearchParams = () => {
           e.preventDefault();
           const formData = new FormData(e.currentTarget);
           const obj = {
-            animal: formData.get("animal") ?? "",
-            breed: formData.get("breed") ?? "",
-            location: formData.get("location") ?? "",
+            animal:
+              (formData.get("animal")?.toString() as Animal) ?? ("" as Animal),
+            breed: formData.get("breed")?.toString() ?? "",
+            location: formData.get("location")?.toString() ?? "",
           };
           setRequestParams(obj);
           // requestPets();
@@ -79,8 +80,11 @@ const SearchParams = () => {
             id="animal"
             value={animal}
             onChange={(e) => {
-              setAnimal(e.target.value);
+              setAnimal(e.target.value as Animal);
               // setBreed("");
+            }}
+            onBlur={(e) => {
+              setAnimal(e.target.value as Animal);
             }}
           >
             <option />
