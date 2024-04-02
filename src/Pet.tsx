@@ -20,7 +20,7 @@ const Pet = (props: IProps) => {
   return (
     // <Link to={`/details/${id}`} className="pet">
     <Link to={`/details/${id}`} className="pet">
-      <div className="image-container">
+      <div data-testid="thumbnail" className="image-container">
         <img src={hero} alt={name} />
       </div>
 
